@@ -136,23 +136,23 @@ th{
     </div>
     <div>
     <label> Attack: </label>
-    <input type="number" placeholder="Pokemon Name" id="attack">
+    <input type="number" placeholder="Pokemon attack" id="attack">
     </div>
     <div>
     <label> Defence: </label>
-    <input type="number" placeholder="Pokemon Name" id="defence">
+    <input type="number" placeholder="Pokemon defence" id="defence">
     </div>
     <div>
     <label> Special Attack: </label>
-    <input type="number" placeholder="Pokemon Name" id="sepAttack">
+    <input type="number" placeholder="Pokemon Special Attack" id="sepAttack">
     </div>
     <div>
     <label> Sepcial Defence: </label>
-    <input type="number" placeholder="Pokemon Name" id="sepDefence">
+    <input type="number" placeholder="Pokemon Special Defence" id="sepDefence">
     </div>
     <div>
     <label> Speed: </label>
-    <input type="number" placeholder="Pokemon Name" id="speed">
+    <input type="number" placeholder="Pokemon Speed" id="speed">
     </div>
     <div> 
         <button id="save" onclick="onClickSave()">Save</button>
@@ -262,7 +262,7 @@ function init(){
              console.log(index);
              buildTable(name, type, number, color, sex, hp, attack, defence, sepAttack, sepDefence, speed, index);
             }
-          displayTable();
+          	displayTable();
 
         }
         else
@@ -300,7 +300,22 @@ function onClickSave(){
         if(xmlhttp.status === 201)
         {
           var allText = xmlhttp.responseText;
-          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+          console.log("status =  " + xmlhttp.status + " text = "  + allText);
+           init();
+		   document.getElementById("name").value = "";
+		   document.getElementById("type").value= "Normal";
+		   document.getElementById("id").value= "";
+		   document.getElementById("color").value= "";
+		   document.getElementById("sex").value= "Male";
+		   document.getElementById("hp").value= "";
+		   document.getElementById("attack").value= "";
+		   document.getElementById("defence").value= "";
+		   document.getElementById("sepAttack").value= "";
+		   document.getElementById("sepDefence").value= "";
+		   document.getElementById("speed").value= "";
+		   if (editIndex != -1){
+		   	  deleteLine(editIndex);
+		   } 
         }
         else
         {
@@ -309,28 +324,7 @@ function onClickSave(){
         }
       }
     }
-      if (editIndex === -1){
    xmlhttp.send(JSON.stringify(pokemon));
-  } 
-  else{
-    deleteLine(editIndex);
-    xmlhttp.send(JSON.stringify(pokemon));
-
-  }
-
-   init();
-  
-   document.getElementById("name").value = "";
-   document.getElementById("type").value= "";
-   document.getElementById("id").value= "";
-   document.getElementById("color").value= "";
-   document.getElementById("sex").value= "";
-   document.getElementById("hp").value= "";
-   document.getElementById("attack").value= "";
-   document.getElementById("defence").value= "";
-   document.getElementById("sepAttack").value= "";
-   document.getElementById("sepDefence").value= "";
-   document.getElementById("speed").value= "";
 }
 
 function buildTable(name, type, id, color, sex, hp, attack, defence, sepAttack, sepDefence, speed, index){
@@ -380,6 +374,7 @@ function deleteLine(index){
             {
               var allText = xmlhttp.responseText;
               console.log("status =  " + xmlhttp.status + " text = "  + allText)
+              init();
             }
             else
             {
@@ -390,7 +385,6 @@ function deleteLine(index){
 
      }
     xmlhttp.send(JSON.stringify(array));
-    init();
 }
 
 function edit(index){
@@ -423,6 +417,7 @@ function edit(index){
                    document.getElementById("speed").value= array[i].speed;
               }
           }
+          // init();
         }
         else
         {

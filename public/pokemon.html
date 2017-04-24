@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head><style type="text/css">body{
+  margin: 0;
+  background: #E0E0E0;
+  font-family: sans-serif;
+}
+
+header, footer, aside{
+  display: block;
+}
+.title{
+ min-width: 1200px;
+ float: left;
+ background: #ffffcc; 
+ min-height: 60px;
+   padding: 10px;
+}
+.upper{
+  min-width: 1200px;
+  height: 300px;
+  background: #e6f2ff;
+  float: left;
+    padding: 10px;
+}
+.lower{
+  min-width: 1200px;
+  height: 800px;
+  background: #e6ffe6;
+  float: left;
+  padding: 10px;
+  text-align: center;
+}
+
+h1{
+  color: red;
+  text-align: center;
+}
+
+label{
+  width: 200px;
+  display: inline-block;  
+  padding: 0 10px;  
+  vertical-align: middle;  
+}
+
+.text{
+  width: 200px;
+  display: inline-block;  
+  padding: 0 10px;  
+  vertical-align: middle;  
+}
+.number{
+  width: 200px;
+  display: inline-block;  
+  padding: 0 10px;  
+  vertical-align: middle;  
+}
+button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width:  100px;
+}
+
+table{
+  width: 800px;
+    border-collapse: collapse;
+}
+
+th,td{
+  border: 2px solid black;
+  padding: 2px;
+}
+
+th{
+  background: #FF7575;
+}
+
+</style><title> Pokemon Backpack</title>
+</head><body>
+  <div class="container">
+  <header class="title"><h1>Pokemon BackPack</h1></header>
+  <aside class="upper">
+    <div>
+    <label> Name: </label>
+    <input type="text" placeholder="Pokemon Name" id="name">
+    </div>
+    <div>
+    <label> Type: </label>
+    <select id="type">
+      <option value="Normal">Normal</option>
+      <option value="Fire">Fire</option>
+      <option value="Water">Water</option>
+      <option value="Electric">Electric</option>
+      <option value="Grass">Grass</option>
+      <option value="Ice">Ice</option>
+      <option value="Fighting">Fighting</option>
+      <option value="Poison">Poison</option>
+      <option value="Ground">Ground</option>
+      <option value="Flying">Flying</option>
+      <option value="Psychic">Psychic</option>
+      <option value="Bug">Bug</option>
+      <option value="Rock">Rock</option>
+      <option value="Ghost">Ghost</option>
+      <option value="Dragon">Dragon</option>
+      <option value="Dark">Dark</option>
+      <option value="Steel">Steel</option>
+      <option value="Fairy">Fairy</option>
+    </select>
+    </div>
+    <div>
+    <label> ID: </label>
+    <input type="number" placeholder="Pokemon ID" id="id">
+    </div>
+    <div>
+    <label> Color: </label>
+    <input type="text" placeholder="Pokemon Color" id="color">
+    </div>
+    <div>
+    <label> Sex: </label>
+    <select id="sex">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+		</select>
+    </div>
+    <div>
+    <label> HP: </label>
+    <input type="number" placeholder="Pokemon HP" id="hp">
+    </div>
+    <div>
+    <label> Attack: </label>
+    <input type="number" placeholder="Pokemon Name" id="attack">
+    </div>
+    <div>
+    <label> Defence: </label>
+    <input type="number" placeholder="Pokemon Name" id="defence">
+    </div>
+    <div>
+    <label> Special Attack: </label>
+    <input type="number" placeholder="Pokemon Name" id="sepAttack">
+    </div>
+    <div>
+    <label> Sepcial Defence: </label>
+    <input type="number" placeholder="Pokemon Name" id="sepDefence">
+    </div>
+    <div>
+    <label> Speed: </label>
+    <input type="number" placeholder="Pokemon Name" id="speed">
+    </div>
+    <div> 
+        <button id="save" onclick="onClickSave()">Save</button>
+    </div>
+    
+  </aside>
+  <aside class="lower">
+	<input type="radio" id = "basic" name="displayRadio" onclick = "displayTable()" value="basic" checked> Basic
+	<input type="radio" id = "detail" name="displayRadio" onclick = "displayTable()" value="detail" > Detail<br>
+    <table id="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>ID</th>
+          <th>Color</th>
+          <th>Sex</th>
+          <th>HP</th>
+          <th>Attack</th>
+          <th>Defence</th>
+          <th>Special Attack</th>
+          <th>Special Defence</th>
+          <th>Speed</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+			<tbody id="tableContent"></tbody>
+    </table>
+  </aside>
+
+  </div>
+<script>window.onload = function(){
+    init();
+    displayTable();
+};
+
+// var array = [];
+ var editIndex = -1;
+ var radio1 = 0;
+
+function displayTable(){
+	var basicRadio = document.getElementById("basic").checked;
+	var detailRadio = document.getElementById("detail").checked;
+	if(basicRadio === true){
+		var tableDisplay = document.getElementById("table");
+		for(var i=0;i<tableDisplay.rows.length;i++){
+			tableDisplay.rows[i].cells[4].style.display = "table-cell";
+			tableDisplay.rows[i].cells[3].style.display = "table-cell";
+			tableDisplay.rows[i].cells[2].style.display = "table-cell";
+			tableDisplay.rows[i].cells[1].style.display = "table-cell";
+			tableDisplay.rows[i].cells[5].style.display = "table-cell";
+			tableDisplay.rows[i].cells[6].style.display = "none";
+			tableDisplay.rows[i].cells[7].style.display = "none";
+			tableDisplay.rows[i].cells[8].style.display = "none";
+			tableDisplay.rows[i].cells[9].style.display = "none";
+			tableDisplay.rows[i].cells[10].style.display = "none";
+
+		}
+	}
+	if(detailRadio === true){
+		var biaoge = document.getElementById("table");
+		for(var i=0;i<tableDisplay.rows.length;i++){
+			tableDisplay.rows[i].cells[4].style.display = "none";
+			tableDisplay.rows[i].cells[3].style.display = "none";
+			tableDisplay.rows[i].cells[2].style.display = "none";
+			tableDisplay.rows[i].cells[1].style.display = "none";
+			tableDisplay.rows[i].cells[5].style.display = "table-cell";
+			tableDisplay.rows[i].cells[6].style.display = "table-cell";
+			tableDisplay.rows[i].cells[7].style.display = "table-cell";
+			tableDisplay.rows[i].cells[8].style.display = "table-cell";
+			tableDisplay.rows[i].cells[9].style.display = "table-cell";
+			tableDisplay.rows[i].cells[10].style.display = "table-cell";
+		}
+	}
+} 
+ 
+ 
+ 
+ 
+function init(){
+    document.getElementById("tableContent").innerHTML = "";
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/articles.json"
+    xmlhttp.open("GET", url, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function ()
+    {
+      if(xmlhttp.readyState === 4)
+      {
+        if(xmlhttp.status === 200)
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+          array = JSON.parse(allText);
+          for (var i = 0; i < array.length; i++){
+             var name = array[i].name;
+             var type = array[i].kind;
+             var number = array[i].number;
+             var color = array[i].color;
+             var sex = array[i].sex;
+             var hp = array[i].hp;
+             var attack = array[i].attack;
+             var defence = array[i].defence;
+             var sepAttack = array[i].sepAttack;
+             var sepDefence = array[i].sepDefence;
+             var speed = array[i].speed;
+             var index = array[i].id;
+             console.log(index);
+             buildTable(name, type, number, color, sex, hp, attack, defence, sepAttack, sepDefence, speed, index);
+    }
+  displayTable();
+
+        }
+        else
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+        }
+      }
+    }
+    xmlhttp.send(JSON.stringify());
+}
+
+function onClickSave(){
+   var name = document.getElementById("name").value;
+   var kind = document.getElementById("type").value;
+   var number = document.getElementById("id").value;
+   var color = document.getElementById("color").value;
+   var sex = document.getElementById("sex").value;
+   var hp = document.getElementById("hp").value;
+   var attack = document.getElementById("attack").value;
+   var defence = document.getElementById("defence").value;
+   var sepAttack = document.getElementById("sepAttack").value;
+   var sepDefence = document.getElementById("sepDefence").value;
+   var speed = document.getElementById("speed").value;
+  
+   var pokemon = {name: name, kind: kind, number: number, color: color, sex: sex, hp: hp, attack: attack, defence: defence, sepAttack: sepAttack, sepDefence: sepDefence, speed: speed};
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/articles.json"
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function ()
+    {
+      if(xmlhttp.readyState === 4)
+      {
+        if(xmlhttp.status === 201)
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+        }
+        else
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+        }
+      }
+    }
+      if (editIndex === -1){
+   xmlhttp.send(JSON.stringify(pokemon));
+  } 
+  else{
+    deleteLine(editIndex);
+    xmlhttp.send(JSON.stringify(pokemon));
+
+  }
+
+   init();
+  
+   document.getElementById("name").value = "";
+   document.getElementById("type").value= "";
+   document.getElementById("id").value= "";
+   document.getElementById("color").value= "";
+   document.getElementById("sex").value= "";
+   document.getElementById("hp").value= "";
+   document.getElementById("attack").value= "";
+   document.getElementById("defence").value= "";
+   document.getElementById("sepAttack").value= "";
+   document.getElementById("sepDefence").value= "";
+   document.getElementById("speed").value= "";
+}
+
+function buildTable(name, type, id, color, sex, hp, attack, defence, sepAttack, sepDefence, speed, index){
+   var table = document.getElementById("tableContent");
+   var row = table.insertRow(); 
+   var nameCell = row.insertCell(0);
+   var typeCell = row.insertCell(1);
+   var idCell = row.insertCell(2);
+   var colorCell = row.insertCell(3);
+   var sexCell = row.insertCell(4);
+   var hpCell = row.insertCell(5);
+   var attackCell = row.insertCell(6);
+   var defenceCell = row.insertCell(7);
+   var sepAttackCell = row.insertCell(8);
+   var sepDefenceCell = row.insertCell(9);
+   var speedCell = row.insertCell(10);
+   var actionCell = row.insertCell(11);
+	
+	nameCell.innerHTML = name;   
+  typeCell.innerHTML = type;   
+	idCell.innerHTML = id;   
+	colorCell.innerHTML = color;   
+	sexCell.innerHTML = sex;   
+	hpCell.innerHTML = hp;   
+	attackCell.innerHTML = attack;   
+	defenceCell.innerHTML = defence;   
+	sepAttackCell.innerHTML = sepAttack;   
+	sepDefenceCell.innerHTML = sepDefence;   
+	speedCell.innerHTML = speed;   
+  actionCell.innerHTML = '<button onclick = "edit('+index+')">Edit</button><br/><button onclick = "deleteLine('+index+')">Delete</button>';
+}
+
+function deleteLine(index){
+    var table = document.getElementById("table");
+    var xmlhttp = new XMLHttpRequest();
+    console.log(index);
+    var url = "/articles/" + index + ".json"
+    console.log(index);
+    console.log(url);
+    xmlhttp.open("DELETE", url, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function ()
+    {
+       if(xmlhttp.readyState === 4)
+       {
+            if(xmlhttp.status === 204)
+            {
+              var allText = xmlhttp.responseText;
+              console.log("status =  " + xmlhttp.status + " text = "  + allText)
+            }
+            else
+            {
+               var allText = xmlhttp.responseText;
+               console.log("status =  " + xmlhttp.status + " text = "  + allText)
+            }
+        }
+
+     }
+    xmlhttp.send(JSON.stringify(array));
+    init();
+}
+
+function edit(index){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/articles.json"
+    xmlhttp.open("GET", url, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function ()
+    {
+      if(xmlhttp.readyState === 4)
+      {
+        if(xmlhttp.status === 200)
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+           array = JSON.parse(allText);
+          for (var i = 0; i < array.length; i++){
+              if (index === array[i].id){
+                   editIndex = index;
+                   document.getElementById("name").value = array[i].name;
+                   document.getElementById("type").value= array[i].kind;
+                   document.getElementById("id").value= array[i].number;
+                   document.getElementById("color").value= array[i].color;
+                   document.getElementById("sex").value= array[i].sex;
+                   document.getElementById("hp").value= array[i].hp;
+                   document.getElementById("attack").value= array[i].attack;
+                   document.getElementById("defence").value= array[i].defence;
+                   document.getElementById("sepAttack").value= array[i].sepAttack;
+                   document.getElementById("sepDefence").value= array[i].sepDefence;
+                   document.getElementById("speed").value= array[i].speed;
+              }
+          }
+        }
+        else
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+        }
+      }
+
+    }
+    xmlhttp.send(JSON.stringify())
+
+}
+
+function writeArticle(){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/pokemon.json"
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function ()
+    {
+      if(xmlhttp.readyState === 4)
+      {
+        if(xmlhttp.status === 201)
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+        }
+        else
+        {
+          var allText = xmlhttp.responseText;
+          console.log("status =  " + xmlhttp.status + " text = "  + allText)
+        }
+      }
+    }
+}
+
+</script></body>

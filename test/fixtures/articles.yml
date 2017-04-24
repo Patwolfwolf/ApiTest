@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  kind: MyString
+  number: 1
+  color: MyString
+  sex: MyString
+  hp: 1
+  attack: 1
+  defence: 1
+  sepAttack: 1
+  sepDefence: 1
+  speed: 1
+
+two:
+  name: MyString
+  kind: MyString
+  number: 1
+  color: MyString
+  sex: MyString
+  hp: 1
+  attack: 1
+  defence: 1
+  sepAttack: 1
+  sepDefence: 1
+  speed: 1

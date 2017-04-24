@@ -262,8 +262,8 @@ function init(){
              var index = array[i].id;
              console.log(index);
              buildTable(name, type, number, color, sex, hp, attack, defence, sepAttack, sepDefence, speed, index);
-    }
-  displayTable();
+            }
+          displayTable();
 
         }
         else
@@ -351,7 +351,7 @@ function buildTable(name, type, id, color, sex, hp, attack, defence, sepAttack, 
    var actionCell = row.insertCell(11);
 	
 	nameCell.innerHTML = name;   
-  typeCell.innerHTML = type;   
+    typeCell.innerHTML = type;   
 	idCell.innerHTML = id;   
 	colorCell.innerHTML = color;   
 	sexCell.innerHTML = sex;   
@@ -361,7 +361,7 @@ function buildTable(name, type, id, color, sex, hp, attack, defence, sepAttack, 
 	sepAttackCell.innerHTML = sepAttack;   
 	sepDefenceCell.innerHTML = sepDefence;   
 	speedCell.innerHTML = speed;   
-  actionCell.innerHTML = '<button onclick = "edit('+index+')">Edit</button><br/><button onclick = "deleteLine('+index+')">Delete</button>';
+    actionCell.innerHTML = '<button onclick = "edit('+index+')">Edit</button><br/><button onclick = "deleteLine('+index+')">Delete</button>';
 }
 
 function deleteLine(index){
